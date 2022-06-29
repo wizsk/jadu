@@ -3,30 +3,26 @@ printf "Do you want to install dwm? [Y/n] " && read -r prom
 [ "$prom" = "n" ] && echo "Nothing will be installed" && exit 0
 
 # aur helper
-printf "\nInstalling\033[1;31m pikaur aur helper \033[0m\n\n"
-git clone https://aur.archlinux.org/pikaur.git
-cd pikaur
-makepkg -fsri
+sudo pacman -S --noconfirm go
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -fsi
 cd
 
-printf "\nInstalling\033[1;31m dwm dependencies \033[0m\n"
-sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot base-devel git vim libx11 libxinerama webkit2gtk picom ttf-roboto-mono dunst sxhkd redshift alacritty light pamixer xwallpaper zsh zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji
+sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot base-devel git vim libx11 libxinerama webkit2gtk picom ttf-roboto-mono
+sudo pacman -S --noconfirm chromium dunst sxhkd redshift alacritty light pamixer xwallpaper zsh zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji
 
 
-printf "\n NOTE: while installing libxft-bgra There will be a promt saying if you want to \033[1;31mremove libxft write y and enter\033[0m\n"
-pikaur -S libxft-bgra
+yay -S libxft-bgra
 
-printf "\nAdding\033[1;31m user to video group \033[0m\n"
 sudo usermod -a -G video "$USER" && printf "\nUser added to video group\n\n"
 
-printf "\ncpoing\033[1;31m dot files \033[0m\n"
 git clone --depth=1 https://github.com/sakibulxyz/dotfiles ~/dotfiles
 cp ~/dotfiles/.??* ~/
 mkdir -p ~/.config
 cp -r ~/dotfiles/.config/* ~/.config/
 rm -rf ~/dotfiles
 
-printf "\ncloning\033[1;31m installing dwm\033[0m\n"
 mkdir -p .local/src
 git clone --depth=1 https://github.com/sakibulxyz/dwm ~/.local/src/dwm
 sudo make -C ~/.local/src/dwm install
@@ -34,7 +30,6 @@ sudo make -C ~/.local/src/dwm install
 git clone --depth=1 https://git.suckless.org/st ~/st
 sudo make -C ~/st install
 rm -rf ~/st
-printf "\033[1;31minstall patched st by uur self \033[0m\n\t $ cd ~/.local/src/st\n\t $ sudo fakeroot\n\t $ make install \n\t $ exit\n\n" 
 git clone --depth=1 https://github.com/sakibulxyz/st ~/.local/src/st
 
 git clone --depth=1 https://github.com/sakibulxyz/dmenu ~/.local/src/dmenu
@@ -43,15 +38,11 @@ sudo make -C ~/.local/src/dmenu install
 git clone --depth=1 https://github.com/sakibulxyz/dwmblocks ~/.local/src/dwmblocks
 sudo make -C ~/.local/src/dwmblocks install
 
-printf "\ncloning\033[1;31m and moving bin \033[0m\n"
 git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\nbin moved to .local/bin\n"
 
-printf "\ninstalling\033[1;31m bangla fonts\033[0m\n"
-pikaur -S ttf-freebanglafont
+yay -S ttf-freebanglafont
 
 mkdir dox pix dl code vids di
-
-printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
 
 
 printf "Do you wanna install Personal pks? [Y/n] " && read -r prom
@@ -60,4 +51,5 @@ then
 	sudo pacman -S --noconfirm bat fzf htop jq lxappearance maim man-db mpv nautilus neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler bluez bluez-utils pulseaudio-bluetooth
 fi
 
+printf "\033[1;31minstall patched st by uur self \033[0m\n\t $ cd ~/.local/src/st\n\t $ sudo fakeroot\n\t $ make install \n\t $ exit\n\n" 
 printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
