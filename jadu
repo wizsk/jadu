@@ -3,14 +3,14 @@ printf "Do you want to install dwm? [Y/n] " && read -r prom
 [ "$prom" = "n" ] && echo "Nothing will be installed" && exit 0
 
 # aur helper
-sudo pacman -S --noconfirm go
+sudo pacman -S --noconfirm go base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -fsi
 cd
 
-sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot base-devel git vim libx11 libxinerama webkit2gtk picom ttf-roboto-mono
-sudo pacman -S --noconfirm chromium dunst sxhkd redshift alacritty light pamixer xwallpaper zsh zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji
+sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
+sudo pacman -S --noconfirm noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
 
 
 yay -S libxft-bgra
