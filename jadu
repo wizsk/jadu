@@ -51,7 +51,7 @@ pikaur -S ttf-freebanglafont
 
 mkdir dox pix dl code vids di
 
-printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t sk:x:1000:1000::/home/sk:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
+printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
 
 
 printf "Do you wanna install Personal pks? [Y/n] " && read -r prom
