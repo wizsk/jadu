@@ -41,7 +41,7 @@ git clone --depth=1 https://github.com/sakibulxyz/dmenu ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
 
 git clone --depth=1 https://github.com/sakibulxyz/dwmblocks ~/.local/src/dwmblocks
-sudo make -C ~/.local/src/dwmblokcs install
+sudo make -C ~/.local/src/dwmblocks install
 
 printf "\ncloning\033[1;31m and moving bin \033[0m\n"
 git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\nbin moved to .local/bin\n"
