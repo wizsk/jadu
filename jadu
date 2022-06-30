@@ -28,9 +28,9 @@ git clone --depth=1 https://github.com/sakibulxyz/dwm ~/.local/src/dwm
 sudo make -C ~/.local/src/dwm install
 
 git clone --depth=1 https://git.suckless.org/st ~/st
-sudo make -C ~/st install
-rm -rf ~/st
 git clone --depth=1 https://github.com/sakibulxyz/st ~/.local/src/st
+sudo make -C ~/.local/src/st install || sudo make -C ~/st install
+rm -rf ~/st
 
 git clone --depth=1 https://github.com/sakibulxyz/dmenu ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
@@ -45,11 +45,9 @@ yay -S ttf-freebanglafont
 mkdir dox pix dl code vids di
 
 
-printf "Do you wanna install Personal pks? [Y/n] " && read -r prom
-if [ ! "$prom" = "n" ] 
-then
-	sudo pacman -S --noconfirm bat fzf htop jq lxappearance maim man-db mpv nautilus neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler bluez bluez-utils pulseaudio-bluetooth
-fi
+# printf "Do you wanna install Personal pks? [Y/n] " && read -r prom
+# if [ ! "$prom" = "n" ] 
+sudo pacman -S --noconfirm zip unzip bat fzf htop lxappearance maim man-db mpv nautilus neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler bluez bluez-utils pulseaudio-bluetooth
 
 printf "\033[1;31minstall patched st by uur self \033[0m\n\t $ cd ~/.local/src/st\n\t $ sudo fakeroot\n\t $ make install \n\t $ exit\n\n" 
 printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
