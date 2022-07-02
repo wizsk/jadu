@@ -39,7 +39,9 @@ sudo make -C ~/.local/src/dwmblocks install
 
 git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\nbin moved to .local/bin\n"
 
+# linking sh to dash
 sudo ln -sfT /bin/dash /bin/sh
+printf "[Trigger]\nType = Package\nOperation = Install\nOperation = Upgrade\nTarget = bash\n\n[Action]\nDescription = Re-pointing /bin/sh symlink to dash...\nWhen = PostTransaction\nExec = /usr/bin/ln -sfT dash /usr/bin/sh\nDepends = dash\n" > /usr/share/libalpm/hooks/bash-to-dash-update.hook
 
 yay -S ttf-freebanglafont
 
