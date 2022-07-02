@@ -12,7 +12,6 @@ cd
 sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
 sudo pacman -S --noconfirm noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
 
-
 yay -S libxft-bgra
 
 sudo usermod -a -G video "$USER" && printf "\nUser added to video group\n\n"
@@ -29,7 +28,7 @@ sudo make -C ~/.local/src/dwm install
 
 git clone --depth=1 https://git.suckless.org/st ~/st
 git clone --depth=1 https://github.com/sakibulxyz/st ~/.local/src/st
-sudo make -C ~/.local/src/st install || sudo make -C ~/st install
+sudo make -C ~/.local/src/st install || sudo make -C ~/st install && simplet="1"
 rm -rf ~/st
 
 git clone --depth=1 https://github.com/sakibulxyz/dmenu ~/.local/src/dmenu
@@ -49,5 +48,5 @@ mkdir dox pix dl code vids di
 # if [ ! "$prom" = "n" ] 
 sudo pacman -S --noconfirm zip unzip bat fzf htop lxappearance maim man-db mpv nautilus neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler bluez bluez-utils pulseaudio-bluetooth
 
-printf "\033[1;31minstall patched st by uur self \033[0m\n\t $ cd ~/.local/src/st\n\t $ sudo fakeroot\n\t $ make install \n\t $ exit\n\n" 
+[ "$simplet" = "1" ] && printf "\033[1;31minstall patched st by uur self \033[0m\n\t $ cd ~/.local/src/st\n\t $ sudo fakeroot\n\t $ make install \n\t $ exit\n\n" 
 printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
