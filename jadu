@@ -10,7 +10,7 @@ makepkg -fsi
 cd
 
 sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
-sudo pacman -S --noconfirm noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
+sudo pacman -S --noconfirm dash noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
 
 yay -S libxft-bgra
 
@@ -38,6 +38,8 @@ git clone --depth=1 https://github.com/sakibulxyz/dwmblocks ~/.local/src/dwmbloc
 sudo make -C ~/.local/src/dwmblocks install
 
 git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\nbin moved to .local/bin\n"
+
+sudo ln -sfT /bin/dash /bin/sh
 
 yay -S ttf-freebanglafont
 
