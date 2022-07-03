@@ -9,8 +9,8 @@ cd yay
 makepkg -fsi
 cd
 
-sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
-sudo pacman -S --noconfirm dash noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
+sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot xorg-xinput vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
+sudo pacman -S --noconfirm dash wget noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
 
 yay -S libxft-bgra
 
