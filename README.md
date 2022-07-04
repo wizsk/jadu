@@ -2,10 +2,10 @@
 ## Arch post installation auto configurer
 ### Fetures
 - Installs dwm, st, alacritty, dmenu and dwmblocks
-- ```/bin/sh``` to dash from bash for more faster shell
+- use ```dash``` for ```/bin/sh``` from bash, for more faster shell
 - And many more daily used programs...
 
-#### for installing run
+#### for installing run (recommended)
 ```sh
 git clone https://github.com/sakibulxyz/jadu
 cd jadu
