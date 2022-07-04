@@ -3,7 +3,7 @@ printf "Do you want to install dwm? [Y/n] " && read -r prom
 [ "$prom" = "n" ] && echo "Nothing will be installed" && exit 0
 
 # aur helper
-sudo pacman -S --noconfirm go base-devel
+sudo pacman -S --noconfirm git go base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -fsi
