@@ -48,7 +48,7 @@ yay -S ttf-freebanglafont ttf-qurancomplex-fonts
 mkdir dox pix down code vids di
 
 # installing addictional pkgs
-sudo pacman -S --noconfirm zip unzip bat fzf htop lxappearance maim man-db mpv nautilus neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler 
+sudo pacman -S --noconfirm zip unzip bat fzf htop lxappearance maim man-db mpv neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler 
 
 # linking sh to dash
 sudo ln -sfT /bin/dash /bin/sh
