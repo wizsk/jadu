@@ -10,7 +10,7 @@ makepkg -fsi
 cd
 
 sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot xorg-xinput vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
-sudo pacman -S --noconfirm dash wget noto-fonts dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
+sudo pacman -S --noconfirm dash wget dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
 
 yay -S libxft-bgra
 
@@ -42,7 +42,7 @@ git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\n
 # coping Bangla Mono font for st
 sudo cp res/Mitra.ttf /usr/share/fonts/TTF/Mitra3.ttf
 # installing bangla font
-yay -S ttf-freebanglafont
+yay -S ttf-freebanglafont ttf-qurancomplex-fonts
 
 # creating some dir
 mkdir dox pix down code vids di
