@@ -9,8 +9,7 @@ cd yay
 makepkg -fsi
 cd
 
-sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot xorg-xinput vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono
-sudo pacman -S --noconfirm dash wget dunst sxhkd redshift alacritty light pamixer xwallpaper zsh-syntax-highlighting jq ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji gnome-themes-extra
+sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot xorg-xinput vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono dash sxhkd alacritty light pamixer xwallpaper ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji 
 
 yay -S libxft-bgra
 
@@ -42,13 +41,9 @@ git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\n
 # coping Bangla Mono font for st
 sudo cp res/Mitra.ttf /usr/share/fonts/TTF/Mitra3.ttf
 # installing bangla font
-yay -S ttf-freebanglafont ttf-qurancomplex-fonts
 
 # creating some dir
 mkdir dox pix down code vids di
-
-# installing addictional pkgs
-sudo pacman -S --noconfirm zip unzip bat fzf htop lxappearance maim man-db mpv neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler 
 
 # linking sh to dash
 sudo ln -sfT /bin/dash /bin/sh
@@ -64,6 +59,7 @@ sudo pacman -S --noconfirm gvfs-mtp
 sudo pacman -Sy --noconfirm gvfs-gphoto2
 
 printf "Do you want to use bluetooth? [Y/n] " && read -r pr
+
 if [ "$pr" != "n" ]
 then
 	sudo pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
@@ -73,6 +69,12 @@ then
 	bluetoothctl agent on
 fi
 
-[ "$simplet" = "1" ] && printf "\033[1;31minstall patched st by uur self \033[0m\n\t $ cd ~/.local/src/st\n\t $ sudo fakeroot\n\t $ make install \n\t $ exit\n\n"
+yay -S ttf-freebanglafont ttf-amiri
+
+printf "Do you want to Install personal programs? [Y/n] " && read -r pr
+if [ "$pr" != "n" ]
+then
+	sudo pacman -S --noconfirm adobe-source-sans-fonts wget dunst redshift zsh-syntax-highlighting jq gnome-themes-extra zip unzip bat fzf htop lxappearance maim man-db mpv neofetch neovim python-pywal sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler 
+fi
 
 printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
