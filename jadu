@@ -3,15 +3,14 @@ printf "Do you want to install dwm? [Y/n] " && read -r prom
 [ "$prom" = "n" ] && echo "Nothing will be installed" && exit 0
 
 # aur helper
-sudo pacman -S --noconfirm git go base-devel
+sudo pacman -S --noconfirm git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -fsi
+makepkg -fsir
 cd
 
 sudo pacman -S --noconfirm xorg-xinit xorg-server xorg-xrandr xorg-xsetroot xorg-xinput vim libx11 libxinerama zsh webkit2gtk picom ttf-roboto-mono dash sxhkd alacritty light pamixer xwallpaper ttf-jetbrains-mono ttf-roboto-mono noto-fonts-emoji 
 
-yay -S libxft-bgra
 
 sudo usermod -a -G video "$USER" && printf "\nUser added to video group\n\n"
 
@@ -21,35 +20,37 @@ mkdir -p ~/.config
 cp -r ~/dotfiles/.config/* ~/.config/
 rm -rf ~/dotfiles
 
-mkdir -p .local/src
-git clone --depth=1 https://github.com/sakibulxyz/dwm ~/.local/src/dwm
-sudo make -C ~/.local/src/dwm install
+dwm_ins() {
+	yay -S libxft-bgra
 
-git clone --depth=1 https://git.suckless.org/st ~/st
-git clone --depth=1 https://github.com/sakibulxyz/st ~/.local/src/st
-sudo make -C ~/.local/src/st install || sudo make -C ~/st install && simplet="1"
-rm -rf ~/st
+	mkdir -p .local/src
+	git clone --depth=1 https://github.com/sakibulxyz/dwm ~/.local/src/dwm
+	sudo make -C ~/.local/src/dwm install
 
-git clone --depth=1 https://github.com/sakibulxyz/dmenu ~/.local/src/dmenu
-sudo make -C ~/.local/src/dmenu install
+	git clone --depth=1 https://github.com/sakibulxyz/st ~/.local/src/st
+	sudo make -C ~/.local/src/st install
+	
+	printf "Do you want to install mira mono (bangla) font? [y/N]"  && read -r font_p
+	[ "$font_p" != y ] && sudo cp res/Mitra.ttf /usr/share/fonts/TTF/Mitra3.ttf
 
-git clone --depth=1 https://github.com/sakibulxyz/dwmblocks ~/.local/src/dwmblocks
-sudo make -C ~/.local/src/dwmblocks install
+	git clone --depth=1 https://github.com/sakibulxyz/dmenu ~/.local/src/dmenu
+	sudo make -C ~/.local/src/dmenu install
+
+	git clone --depth=1 https://github.com/sakibulxyz/dwmblocks ~/.local/src/dwmblocks
+	sudo make -C ~/.local/src/dwmblocks install
+}
 
 git clone --depth=1 https://github.com/sakibulxyz/bin ~/.local/bin && printf "\nbin moved to .local/bin\n"
 
-# coping Bangla Mono font for st
-sudo cp res/Mitra.ttf /usr/share/fonts/TTF/Mitra3.ttf
-# installing bangla font
 
 # creating some dir
 mkdir dox pix down code vids di
 
-# linking sh to dash
-sudo ln -sfT /bin/dash /bin/sh
-printf "[Trigger]\nType = Package\nOperation = Install\nOperation = Upgrade\nTarget = bash\n\n[Action]\nDescription = Re-pointing /bin/sh symlink to dash...\nWhen = PostTransaction\nExec = /usr/bin/ln -sfT dash /usr/bin/sh\nDepends = dash\n" | sudo tee /usr/share/libalpm/hooks/bash-to-dash-update.hook
-
-
+link_sh_dash() {
+	sudo ln -sfT /bin/dash /bin/sh
+	printf "[Trigger]\nType = Package\nOperation = Install\nOperation = Upgrade\nTarget = bash\n\n[Action]\nDescription = Re-pointing /bin/sh symlink to dash...\nWhen = PostTransaction\nExec = /usr/bin/ln -sfT dash /usr/bin/sh\nDepends = dash\n" | sudo tee /usr/share/libalpm/hooks/bash-to-dash-update.hook
+}
+ink_sh_dash
 
 # android file transfer
 echo "installing android file transfer utils"
@@ -69,7 +70,7 @@ then
 	bluetoothctl agent on
 fi
 
-yay -S ttf-freebanglafont ttf-amiri
+yay -S ttf-freebanglafont
 
 printf "Do you want to Install personal programs? [Y/n] " && read -r pr
 if [ "$pr" != "n" ]
