@@ -50,7 +50,7 @@ link_sh_dash() {
 	sudo ln -sfT /bin/dash /bin/sh
 	printf "[Trigger]\nType = Package\nOperation = Install\nOperation = Upgrade\nTarget = bash\n\n[Action]\nDescription = Re-pointing /bin/sh symlink to dash...\nWhen = PostTransaction\nExec = /usr/bin/ln -sfT dash /usr/bin/sh\nDepends = dash\n" | sudo tee /usr/share/libalpm/hooks/bash-to-dash-update.hook
 }
-ink_sh_dash
+link_sh_dash
 
 # installing font
 font_ins() {
