@@ -85,4 +85,9 @@ then
 	sudo pacman -S --noconfirm adobe-source-sans-fonts wget dunst redshift zsh-syntax-highlighting jq gnome-themes-extra zip unzip bat fzf htop lxappearance maim man-db mpv neofetch neovim  sxiv syncthing termdown ueberzug xclip yt-dlp zathura zathura-cb zathura-pdf-poppler 
 fi
 
+
+# bash to zsh
+sudo sed -i "s/${USER}:x:1000:1000::\/home\/${USER}:\/bin\/bash/${USER}:x:1000:1000::\/home\/${USER}:\/bin\/zsh/" /etc/passwd
+
+
 printf "\nReplace\t $USER:x:1000:1000::/home/$USER:/bin/bash \nto\t $USER:x:1000:1000::/home/$USER:/bin/zsh \nAt\t /etc/passwd\nrun\t $ sudo vim /etc/passwd\nEdit\t wq\!\n"
